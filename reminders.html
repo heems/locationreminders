@@ -1,0 +1,31 @@
+<html>
+<head>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="https://www.firebase.com/css/example.css">
+</head>
+<body>
+<div id = 'map'></div>
+<div id = 'text'>
+
+<script>
+  var user = 'user1'
+  var lat = 12
+  var longit = -13
+  // Get a reference to the root of the chat data.
+  var messagesRef = new Firebase('https://reminders.firebaseio.com/' + user);
+
+  messagesRef.on('value', function(snapshot){
+    key = Object.keys(snapshot.val())[0];
+    if(lat == Math.round(snapshot.val()[key][0]) && longit == Math.round(snapshot.val()[key][1])){
+      $('text').append(key);
+    }
+  });
+  $('body').append('</div>');
+
+  // When the user presses enter on the message input, write the message to firebase.
+  
+
+</script>
+</body>
+</html>
